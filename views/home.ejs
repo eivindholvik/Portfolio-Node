@@ -12,5 +12,16 @@
         <div data-spy="scroll" data-target="#navbar" data-offset="0">
             <%- include('./partials/home.ejs') %>
         </div>
+        <script>
+            const typed = new Typed(".aboutMe", {
+                strings: <%- JSON.stringify(introArray) %>,
+                smartBackspace: true,
+                typeSpeed: 100,
+                backSpeed: 50,
+                loop: true,
+                loopCount: Infinity,
+                startDelay: 1000,
+            });
+        </script>
     </body>
 </html>
