@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Portfolio | Home</title>
+        <link rel="stylesheet" href="/bootstrap-icons.min.css" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/home/header.css" />
+        <%- include('./partials/scripts.ejs') %>
+    </head>
+    <body class="position-relative" data-bs-spy="scroll">
+        <%- include('./partials/navbar.ejs') %>
+        <div data-spy="scroll" data-target="#navbar" data-offset="0">
+            <%- include('./partials/home.ejs') %>
+        </div>
+    </body>
+</html>

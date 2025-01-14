@@ -1,13 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const homeRouter = require("./routes/home");
+const aboutRouter = require("./routes/about");
+const contactRouter = require("./routes/contact");
+const portfolioRouter = require("./routes/portfolio");
+const recommendationsRouter = require("./routes/recommendations");
+const servicesRouter = require("./routes/services");
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +29,12 @@ app.use(express.static(path.join(__dirname + "/node_modules/jquery/dist/")));
 app.use(express.static(path.join(__dirname + "/node_modules/typed.js/lib")));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/home', homeRouter);
+app.use('/about', aboutRouter);
+app.use('/services', servicesRouter);
+app.use('/recommendations', recommendationsRouter);
+app.use('/portfolio', portfolioRouter);
+app.use('/contact', contactRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
