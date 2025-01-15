@@ -16,7 +16,16 @@
       </div>
     </div>
     <div class="row grid">
-      <div class="hide col-lg-4 col-md-6 col-sm-12 wedding">
+      <% cakes.forEach(cake => { %>
+        <div class="hide col-lg-4 col-md-6 col-sm-12 <%= cake.category %>">
+          <div class="text-center">
+            <img src="http://localhost:8080/images/<%=cake.name%>" alt="<%=cake.alt%>" class="mb-3" style="width: 100%;" />
+            <h4><%=cake.header%></h4>
+            <p><%=cake.description%></p>
+          </div>
+        </div>
+      <% }); %>
+      <!-- <div class="hide col-lg-4 col-md-6 col-sm-12 wedding">
         <div class="text-center">
           <img class="mb-3" src="./img/wedding_cake.jpg" alt="Wedding 1" style="width:100%">
           <h4>Wedding cake for Mark & Emily</h4>
@@ -79,6 +88,6 @@
           <h4>Company's 50th anniversary</h4>
           <p>The big company celebrated its 50th anniversary with this classy cake!</p>
         </div>
-      </div>              
+      </div>               -->
     </div>
 </section>
