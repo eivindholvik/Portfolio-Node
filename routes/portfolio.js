@@ -5,6 +5,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 const request = require("request");
+const ensureLogIn = require("connect-ensure-login").ensureLoggedIn;
+const ensureLoggedIn = ensureLogIn();
 
 
 /* GET home page. */
@@ -31,7 +33,8 @@ router.post("/", jsonParser, (req, res, next) => {
 
 });
 
-router.delete("/", jsonParser, (req, res, next) => {
+router.delete("/", jsonParser, ensureLoggedIn, (req, res, next) => {
+  console.log(req);
   const dataFromFile = fs.readFileSync(path.resolve(__dirname, "../data/portfolio.json"));
   const cakes = JSON.parse(dataFromFile);
   const filtered = cakes.filter(({ name }) => name !== req.body.name);
@@ -43,7 +46,7 @@ router.delete("/", jsonParser, (req, res, next) => {
     console.log(`${req.body.name} was successfully delete!`);
   });
   fs.writeFileSync(path.resolve(__dirname, "../data/portfolio.json"), JSON.stringify(filtered));
-  res.end("Successfully deleted cake");
+  res.json("Successfully deleted cake");
 });
 
 //download image to the server:
